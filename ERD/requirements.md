@@ -16,5 +16,5 @@ This ERD illustrates the database design for an Airbnb-like platform.
 - Each booking can only have one payment.
 - Messaging system allows users to communicate via messages.
 
-Diagram: ![ERD](the_airbnbERD.drawio.png)
+Diagram: ![ERD](alx-airbnb-database/the_airbnbERD.drawio.png)
 
