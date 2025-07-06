@@ -62,3 +62,9 @@ You should observe a significant reduction in `rows scanned` (indicating that th
 SELECT property_id, name, description, location
 FROM Property
 WHERE location = 'New York';
+
+-- Example query to test bookings by a specific user
+SELECT B.booking_id, B.check_in_date, B.check_out_date, P.name AS property_name
+FROM Booking AS B
+INNER JOIN Property AS P ON B.property_id = P.property_id
+WHERE B.user_id = 'some-specific-user-uuid'; -- Replace with an actual user_id from your data
