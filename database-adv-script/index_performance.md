@@ -57,14 +57,36 @@ You should observe a significant reduction in `rows scanned` (indicating that th
 
 **Example Query to Test (before and after `idx_property_location`):**
 
-```sql
--- Example query to test property location search
-SELECT property_id, name, description, location
-FROM Property
-WHERE location = 'New York';
+# Index Implementation and Performance Analysis Report
 
--- Example query to test bookings by a specific user
-SELECT B.booking_id, B.check_in_date, B.check_out_date, P.name AS property_name
-FROM Booking AS B
-INNER JOIN Property AS P ON B.property_id = P.property_id
-WHERE B.user_id = 'some-specific-user-uuid'; -- Replace with an actual user_id from your data
+This document outlines the indexing strategy applied to the Airbnb backend database and provides instructions on how to measure the performance impact of these indexes. This is part of the "Unleashing Advanced Querying Power" project.
+
+---
+
+## 1. Identified High-Usage Columns for Indexing
+
+Based on typical application usage patterns (columns used in `WHERE`, `JOIN`, and `ORDER BY` clauses) and the provided database schema, the following columns were identified for indexing:
+
+- **User.email**
+- **Property.host_id**
+- **Property.location**
+- **Property.price_per_night**
+- **Booking.user_id**
+- **Booking.property_id**
+- **Booking.check_in_date, check_out_date** (composite index)
+- **Review.property_id**
+- **Review.user_id**
+
+> Primary key columns are assumed to be indexed automatically by the database.
+
+---
+
+## 2. SQL Index Creation Commands
+
+Indexes were added in the file: [`database_index.sql`](./database_index.sql)
+
+Sample entries include:
+
+```sql
+CREATE INDEX idx_property_location ON Property(location);
+CREATE INDEX idx_booking_property_dates ON Booking(property_id, check_in_date, check_out_date);
