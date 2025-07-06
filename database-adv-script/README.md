@@ -20,3 +20,23 @@ This file includes the following complex queries:
     * **Note:** Standard SQL `FULL OUTER JOIN` syntax is provided, along with a common `LEFT JOIN` + `UNION ALL` + `RIGHT JOIN` workaround for MySQL, which does not natively support `FULL OUTER JOIN`.
 
 These queries help master the fundamental concepts and practical application of SQL joins for efficient data retrieval from relational databases.
+
+# Advanced SQL Queries - Subqueries
+
+This directory contains SQL scripts demonstrating the use of subqueries, both non-correlated and correlated, as part of the "Unleashing Advanced Querying Power" project for the ALX Airbnb Database Module.
+
+## `subqueries.sql`
+
+This file includes the following complex queries:
+
+1.  **Non-Correlated Subquery: Properties with Average Rating > 4.0**
+    * **Objective:** Identify properties that have received an average rating higher than 4.0.
+    * **Description:** The inner subquery calculates the average rating for each property independently and filters for those meeting the criteria. The outer query then retrieves the details of these properties. This subquery is "non-correlated" because it does not depend on rows from the outer query for its execution.
+    * **Tables Involved:** `Property`, `Review`
+
+2.  **Correlated Subquery: Users with More Than 3 Bookings**
+    * **Objective:** Find users who have made more than three bookings.
+    * **Description:** The inner subquery counts the number of bookings for each `user_id` passed from the outer query's `User` table. This subquery is "correlated" because its execution depends on values (`U.user_id`) from the outer query, making it re-evaluate for each row processed by the outer query.
+    * **Tables Involved:** `User`, `Booking`
+
+Illustrate how subqueries can be effectively used for advanced data filtering and analysis where conditions rely on aggregate results or row-by-row comparisons.
