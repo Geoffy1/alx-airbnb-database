@@ -33,15 +33,13 @@ SELECT
 FROM
     Property AS P
 LEFT JOIN
-    Review AS R ON P.property_id = R.property_id;
+    Review AS R ON P.property_id = R.property_id
+ORDER BY
+    P.property_id;
 
 -- Instruction 3:
 -- Write a query using a FULL OUTER JOIN to retrieve all users and all bookings,
 -- even if the user has no booking or a booking is not linked to a user.
--- Note: MySQL does not directly support FULL OUTER JOIN.
--- A common workaround involves combining LEFT JOIN and RIGHT JOIN with UNION.
--- The following assumes a database system that supports FULL OUTER JOIN (e.g., PostgreSQL, SQL Server).
--- If using MySQL, please refer to the commented alternative below.
 
 -- Standard SQL (PostgreSQL, SQL Server, etc.):
 /*
@@ -85,4 +83,4 @@ FROM
 RIGHT JOIN
     Booking AS B ON U.user_id = B.user_id
 WHERE
-    U.user_id IS NULL; -- This condition ensures we only get bookings not linked to any user from the RIGHT JOIN part
+    U.user_id IS NULL;
