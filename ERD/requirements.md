@@ -16,5 +16,5 @@ This ERD illustrates the database design for an Airbnb-like platform.
 - Each booking can only have one payment.
 - Messaging system allows users to communicate via messages.
 
-Diagram: ![ERD](/Users/geonjogu/Downloads/erd1.png )
+Diagram: ![ERD](https://drive.google.com/file/d/1VAnakX_TEptryelu27as06eDHd10po27/view?usp=sharing)
 
